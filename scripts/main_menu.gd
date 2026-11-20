@@ -14,7 +14,7 @@ func _on_play_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/rink.tscn")
 
 func _on_controls_pressed() -> void:
-	hint.text = "WASD / arrows skate — Space pass, J shoot, K check, Tab switch skater, Esc pause. Controller: left stick, X pass, A shoot, B check, Y switch."
+	hint.text = "Gamepad first: left stick skate — X pass, A shoot, B check, Y switch, Start pause. Keyboard fallback: WASD, Space pass, J shoot, K check, Tab switch, Esc pause."
 
 func _on_build_sheet_pressed() -> void:
-	hint.text = "One mode: arcade league match, 3 periods x 3 minutes. Most goals wins; tie goes to 2-min OT, then a shootout. NOT a manager sim, NOT tower defence, NOT a story RPG."
+	hint.text = "One 9-minute match — no managing, no towers, no story — just skate, check, score. Most goals wins; tie goes to 2-min OT, then a shootout. NOT a manager sim, NOT tower defence, NOT a story RPG."

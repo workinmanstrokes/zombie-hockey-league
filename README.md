@@ -4,50 +4,66 @@
 
 **Platform:** PC (Windows via Steam) · **Category:** Sports · **Engine:** Godot 4
 
-## Tester review — the reason for this update
+## Tester reviews — the reason for these updates
 
-A game tester reviewed the build and scored it **2.5/10 (grade F)**. This update is
-fix-first: no new features until the five fixes below are applied to the existing
-project.
+- A game tester reviewed the build and scored it **2.5/10 (grade F)**. That review drove the fix-first update: a one-page build sheet, one locked mode, and controls plus a minimum spec in writing.
+- VEX (Game Test Lab) then scored it **3.5/10 (grade D)** — "a title in search of a playable game". This update answers that review: a sub-200-word build brief, a real vertical slice (one rink, two zombie teams of three, a full match to the final whistle with periods, sudden-death overtime, and a shootout), gamepad-first controls, a one-line differentiation, and a Windows export preset so a verifiable build can be produced.
 
-## The five fixes (highest priority first)
+## The vertical slice (this update)
+
+- One rink, two teams of three: Montreal Cadaviens (home, green) vs Detroit Dread Wings (away, red).
+- Full match: 3 periods × 3 minutes, most goals wins, sudden-death overtime, then a shootout (best of 3 rounds, then sudden-death rounds).
+- Core loop: skate → pass → shoot/check → score. Loose pucks can be picked up; a check flattens a zombie for 2 seconds and knocks the puck loose.
+- Shooting is aimed: hold Up/Down while shooting to pick a corner — the goalie guards the middle.
+- Live FPS readout in the match HUD, so the 60 fps target is visible in the capture.
+- Pause now actually unpauses (the match node keeps processing while paused); R restarts from anywhere.
+
+## The fixes (highest priority first)
 
 1. **Write a one-page build sheet first** — 30-second loop, match length, win/lose
    condition, controls, and exactly one mode. Publish that before adding any new
-   feature. See [`docs/BUILD_SHEET.md`](docs/BUILD_SHEET.md).
+   feature. See [`docs/BUILD_SHEET.md`](docs/BUILD_SHEET.md) and the sub-200-word
+   [`docs/BUILD_BRIEF.md`](docs/BUILD_BRIEF.md).
 2. **Lock one identity and cut the rest** — arcade league match. Manager sim and
    tower defence are cut. The build sheet lists three things this game is NOT,
    to stop scope creep.
 3. **Capture 60 seconds of the locked loop on real PC hardware** and attach it to
    the next review — no trailer polish, just skating, shooting/checking, and scoring.
-4. **Define the control scheme and minimum PC target in writing** (keyboard and
-   controller, plus a spec benchmark comparable to Wild Ice's i3-6100 / GTX 750 Ti
-   floor) and test it on two different machines.
-   See [`docs/CONTROLS_AND_MIN_SPEC.md`](docs/CONTROLS_AND_MIN_SPEC.md).
-5. **Write the one-sentence differentiation** from Wild Ice and Mutant League
-   Hockey, then put price, demo plan, and a Steam page date behind it.
+   Checklist: [`docs/CAPTURE_CHECKLIST.md`](docs/CAPTURE_CHECKLIST.md).
+4. **Define the control scheme and minimum PC target in writing** (gamepad-first,
+   keyboard fallback, plus a spec benchmark comparable to Wild Ice's i3-6100 / GTX 750 Ti
+   floor) and test it on two different machines, with three fresh players who have
+   never seen the game. See [`docs/CONTROLS_AND_MIN_SPEC.md`](docs/CONTROLS_AND_MIN_SPEC.md).
+5. **Write the one-sentence differentiation** from Wild Ice, Mutant League Hockey,
+   and Zombie Hockey Manager, then put price, demo plan, and a Steam page date behind it.
 
 ## What this build contains
 
-- `docs/BUILD_SHEET.md` — the one-page build sheet (fix #1, published first).
-- `docs/CONTROLS_AND_MIN_SPEC.md` — keyboard + controller scheme, minimum spec,
-  and the two-machine test log (fix #4).
+- `docs/BUILD_BRIEF.md` — the sub-200-word build brief (VEX fix #1).
+- `docs/BUILD_SHEET.md` — the one-page build sheet, season format, differentiation, and price/demo/Steam plan.
+- `docs/DIRECTION.md` — visual direction, rink and zombie design, audio direction.
+- `docs/CAPTURE_CHECKLIST.md` — the 60-second capture checklist.
+- `docs/CONTROLS_AND_MIN_SPEC.md` — gamepad-first scheme, minimum spec, fresh-player protocol, and the two-machine test log.
+- `export_presets.cfg` — Windows Desktop export preset (Godot 4.3 templates required).
 - `project.godot` — Godot 4 project definition, input map, and Windows export settings.
 - `scenes/main.tscn` — main menu and match entry.
-- `scenes/rink.tscn` — playable rink skeleton with goals, puck, and skaters.
-- `scripts/player.gd` — skating, passing, shooting, checking, and player switching.
+- `scenes/rink.tscn` — playable rink: two teams of three, goals, puck, HUD with FPS and result.
+- `scripts/player.gd` — skating, passing, shooting, checking, player switching, stun, puck carry/pickup.
+- `scripts/match.gd` — periods, overtime, shootout, pause, restart, switching, FPS.
 - `BUILD-PLAN.md` — the full plan: features, stack, milestones, and open questions.
 
 ## How to run
 
-1. Open this folder in Godot 4.
+1. Open this folder in Godot 4.3.
 2. Press F5 (or Play) — the main scene is `scenes/main.tscn`.
-3. From the menu, start a match: skate with WASD / arrow keys or the left stick,
-   pass with Space / X, shoot with J / A, check with K / B, switch skater with
-   Tab / Y, pause with Esc / Start.
+3. From the menu, start a match: gamepad left stick to skate, X pass, A shoot (hold Up/Down to aim a corner), B check, Y switch skater, Start pause. Keyboard fallback: WASD / arrows, Space pass, J shoot, K check, Tab switch, Esc pause, R restart.
+
+## How to build (Windows)
+
+1. In Godot, install the export templates (Editor > Manage Export Templates).
+2. Project > Export > Windows Desktop — the "Windows Desktop" preset exports to `../builds/zombie-hockey-league.exe`.
+3. No binary is checked into the repo; the exported build is the verifiable build for the next review.
 
 ## Status
 
-Fix-first update in progress. The loop (skate → pass → shoot/check → score) is a
-playable skeleton; the 60-second capture (fix #3) and the two-machine test log
-(fix #4) are still open until recorded on real hardware.
+Fix-first update in progress. The vertical slice (3v3, periods, OT, shootout) is in the code; the 60-second capture, the fresh-player playtest, and the two-machine test log are still open until recorded on real hardware. Price, demo date, and Steam page date are still the maker's calls.
