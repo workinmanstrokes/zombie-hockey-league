@@ -8,6 +8,7 @@
 
 - A game tester reviewed the build and scored it **2.5/10 (grade F)**. That review drove the fix-first update: a one-page build sheet, one locked mode, and controls plus a minimum spec in writing.
 - VEX (Game Test Lab) then scored it **3.5/10 (grade D)** — "a title in search of a playable game". This update answers that review: a sub-200-word build brief, a real vertical slice (one rink, two zombie teams of three, a full match to the final whistle with periods, sudden-death overtime, and a shootout), gamepad-first controls, a one-line differentiation, and a Windows export preset so a verifiable build can be produced.
+- A follow-up update answers VEX's four remaining items: the monetisation decision in writing (one-time purchase, no pay-to-win, full league in the base price), Super Blood Hockey added to the differentiation, the zombie rules pinned to the code in this repo, and a PC target-device test log (`docs/TEST_LOG.md`). Note: VEX's items 3–4 refer to a "phone build" — there is no phone build; the target device is PC (Windows via Steam), and the test log corrects that.
 
 ## The vertical slice (this update)
 
@@ -34,8 +35,10 @@
    keyboard fallback, plus a spec benchmark comparable to Wild Ice's i3-6100 / GTX 750 Ti
    floor) and test it on two different machines, with three fresh players who have
    never seen the game. See [`docs/CONTROLS_AND_MIN_SPEC.md`](docs/CONTROLS_AND_MIN_SPEC.md).
-5. **Write the one-sentence differentiation** from Wild Ice, Mutant League Hockey,
-   and Zombie Hockey Manager, then put price, demo plan, and a Steam page date behind it.
+5. **Write the one-sentence differentiation** from Wild Ice, Super Blood Hockey,
+   Mutant League Hockey, and Zombie Hockey Manager, then put the decided
+   monetisation (one-time purchase, no pay-to-win), demo plan, and a Steam page
+   date behind it.
 
 ## What this build contains
 
@@ -44,6 +47,7 @@
 - `docs/DIRECTION.md` — visual direction, rink and zombie design, audio direction.
 - `docs/CAPTURE_CHECKLIST.md` — the 60-second capture checklist.
 - `docs/CONTROLS_AND_MIN_SPEC.md` — gamepad-first scheme, minimum spec, fresh-player protocol, and the two-machine test log.
+- `docs/TEST_LOG.md` — the target-device test log: zombie rules pinned to the code, the no-phone-build correction, and the PC checklist.
 - `export_presets.cfg` — Windows Desktop export preset (Godot 4.3 templates required).
 - `project.godot` — Godot 4 project definition, input map, and Windows export settings.
 - `scenes/main.tscn` — main menu and match entry.
@@ -66,4 +70,4 @@
 
 ## Status
 
-Fix-first update in progress. The vertical slice (3v3, periods, OT, shootout) is in the code; the 60-second capture, the fresh-player playtest, and the two-machine test log are still open until recorded on real hardware. Price, demo date, and Steam page date are still the maker's calls.
+Fix-first update in progress. The vertical slice (3v3, periods, OT, shootout) is in the code; the 60-second capture, the fresh-player playtest, and the two-machine test log are still open until recorded on real hardware. Monetisation is decided in writing (one-time purchase, no pay-to-win, the full league in the base price); the dollar figure, demo date, and Steam page date are still the maker's calls.

@@ -70,13 +70,24 @@ finished look.
 Zombie Hockey League is one 9-minute arcade zombie-hockey match — skate,
 check, score, done — where Mutant League Hockey is a retro parody built on
 jokes, Wild Ice is a realistic sim with tower defence launching 19 August 2026,
-and Zombie Hockey Manager is a management game. This game wins on speed and
-simplicity, and the first match delivers the whole game: no managing, no
-building, no story.
+Super Blood Hockey is 4v4 arcade hockey built around brawls and fights, and
+Zombie Hockey Manager is a management game. This game wins on speed and
+simplicity: 3v3, zombie rules (no offsides, no icing, no stamina, a checked
+zombie stays down 2 seconds), and the first match delivers the whole game:
+no managing, no building, no story, no brawling.
 
 ## Price, demo, Steam page
 
-- **Price:** TBD — maker to confirm (not set in this update).
+- **Monetisation (decided):** one-time purchase for the full PC game. No
+  pay-to-win, no microtransactions, no paid DLC, no in-game purchases of any
+  kind.
+- **Scope tied to the price:** the full 8-team league — season table,
+  standings, and the one-match final — ships inside that one purchase, once
+  the single match plays cleanly. Nothing in the league is held back behind a
+  second payment, and no paid extra is planned, so the price caps the scope:
+  the game cannot grow by adding paid parts.
+- **Price figure:** TBD — the maker sets the dollar figure before the Steam
+  page goes live. No figure is invented here.
 - **Demo plan:** a playable one-match demo once the 60-second capture
   passes review; target is ahead of Wild Ice's 19 August 2026 launch —
   exact date maker to confirm.
@@ -91,4 +102,6 @@ building, no story.
 shooting/checking, and scoring — must be attached to the next review.
 Checklist: [`docs/CAPTURE_CHECKLIST.md`](CAPTURE_CHECKLIST.md). The match HUD
 now shows a live FPS readout so the 60 fps target is visible in the capture.
-Status: **not yet captured**.
+Status: **not yet captured**. The target-device test log — zombie rules pinned
+to the code, and what must be run on real PC hardware — is
+[`docs/TEST_LOG.md`](TEST_LOG.md).
