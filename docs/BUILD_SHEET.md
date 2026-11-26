@@ -78,6 +78,9 @@ no managing, no building, no story, no brawling.
 
 ## Price, demo, Steam page
 
+Full release path, with gated steps and what validates demand at each step:
+[`docs/RELEASE_PATH.md`](RELEASE_PATH.md).
+
 - **Monetisation (decided):** one-time purchase for the full PC game. No
   pay-to-win, no microtransactions, no paid DLC, no in-game purchases of any
   kind.
@@ -86,15 +89,18 @@ no managing, no building, no story, no brawling.
   the single match plays cleanly. Nothing in the league is held back behind a
   second payment, and no paid extra is planned, so the price caps the scope:
   the game cannot grow by adding paid parts.
+- **Release path (in order):** 60-second capture on real hardware → free
+  one-match demo (validates whether players finish and replay a match) →
+  Steam page with price, capsule art, capture, and demo (validates demand via
+  wishlists) → 1.0 launch with the full 8-team league. PC (Windows) via
+  Steam only. A Windows export preset (`export_presets.cfg`) is in the repo
+  so a verifiable build can be produced from Godot 4.3; no binary is checked in.
 - **Price figure:** TBD — the maker sets the dollar figure before the Steam
-  page goes live. No figure is invented here.
-- **Demo plan:** a playable one-match demo once the 60-second capture
-  passes review; target is ahead of Wild Ice's 19 August 2026 launch —
-  exact date maker to confirm.
+  page goes live; a Steam page cannot publish without a price. No figure is
+  invented here.
+- **Demo date:** target is ahead of Wild Ice's 19 August 2026 launch — exact
+  date maker to confirm.
 - **Steam page date:** TBD — maker to confirm.
-- **Release path:** PC (Windows) via Steam. A Windows export preset
-  (`export_presets.cfg`) is in the repo so a verifiable build can be produced
-  from Godot 4.3; no binary is checked in.
 
 ## Next review evidence (fix #3)
 
