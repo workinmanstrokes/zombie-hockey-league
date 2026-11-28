@@ -8,8 +8,9 @@
 
 - A game tester reviewed the build and scored it **2.5/10 (grade F)**. That review drove the fix-first update: a one-page build sheet, one locked mode, and controls plus a minimum spec in writing.
 - VEX (Game Test Lab) then scored it **3.5/10 (grade D)** — "a title in search of a playable game". This update answers that review: a sub-200-word build brief, a real vertical slice (one rink, two zombie teams of three, a full match to the final whistle with periods, sudden-death overtime, and a shootout), gamepad-first controls, a one-line differentiation, and a Windows export preset so a verifiable build can be produced.
-- A follow-up update answers VEX's four remaining items: the monetisation decision in writing (one-time purchase, no pay-to-win, full league in the base price), Super Blood Hockey added to the differentiation, the zombie rules pinned to the code in this repo, and a PC target-device test log (`docs/TEST_LOG.md`). Note: VEX's items 3–4 refer to a "phone build" — there is no phone build; the target device is PC (Windows via Steam), and the test log corrects that.
-- The latest update answers VEX's remaining flag — no release path stated — with a gated release path in [`docs/RELEASE_PATH.md`](docs/RELEASE_PATH.md): 60-second capture → free one-match demo → Steam page → 1.0 launch, with what validates demand at each step. The price figure, demo date, and Steam page date are still the maker's calls and are recorded as open decisions there, not invented.
+- A follow-up update answers VEX’s four remaining items: the monetisation decision in writing (one-time purchase, no pay-to-win, full league in the base price), Super Blood Hockey added to the differentiation, the zombie rules pinned to the code in this repo, and a PC target-device test log (`docs/TEST_LOG.md`). Note: VEX’s items 3–4 refer to a "phone build" — there is no phone build; the target device is PC (Windows via Steam), and the test log corrects that.
+- The latest update answers VEX’s remaining flag — no release path stated — with a gated release path in [`docs/RELEASE_PATH.md`](docs/RELEASE_PATH.md): 60-second capture → free one-match demo → Steam page → 1.0 launch, with what validates demand at each step. The price figure, demo date, and Steam page date are still the maker’s calls and are recorded as open decisions there, not invented.
+- This update corrects the Wild Ice references now that it has launched (19 August 2026 on Steam, free demo, split-screen co-op): the one-sentence differentiation and the demo-date target in `docs/BUILD_SHEET.md` and `docs/RELEASE_PATH.md`. The old “ahead of Wild Ice’s launch” demo target lapsed when Wild Ice went live, so the maker must set a new target date. Still open and still the maker’s items, not invented here: the 60-second capture, the two-machine test log, the price figure, the demo date, and the Steam page date.
 
 ## The vertical slice (this update)
 
@@ -33,7 +34,7 @@
    the next review — no trailer polish, just skating, shooting/checking, and scoring.
    Checklist: [`docs/CAPTURE_CHECKLIST.md`](docs/CAPTURE_CHECKLIST.md).
 4. **Define the control scheme and minimum PC target in writing** (gamepad-first,
-   keyboard fallback, plus a spec benchmark comparable to Wild Ice's i3-6100 / GTX 750 Ti
+   keyboard fallback, plus a spec benchmark comparable to Wild Ice’s i3-6100 / GTX 750 Ti
    floor) and test it on two different machines, with three fresh players who have
    never seen the game. See [`docs/CONTROLS_AND_MIN_SPEC.md`](docs/CONTROLS_AND_MIN_SPEC.md).
 5. **Write the one-sentence differentiation** from Wild Ice, Super Blood Hockey,
@@ -73,4 +74,4 @@
 
 ## Status
 
-Fix-first update in progress. The vertical slice (3v3, periods, OT, shootout) is in the code; the 60-second capture, the fresh-player playtest, and the two-machine test log are still open until recorded on real hardware. Monetisation is decided in writing (one-time purchase, no pay-to-win, the full league in the base price) and the release path is now stated in `docs/RELEASE_PATH.md`; the dollar figure, demo date, and Steam page date are still the maker's calls.
+Fix-first update in progress. The vertical slice (3v3, periods, OT, shootout) is in the code; the 60-second capture, the fresh-player playtest, and the two-machine test log are still open until recorded on real hardware. Monetisation is decided in writing (one-time purchase, no pay-to-win, the full league in the base price) and the release path is now stated in `docs/RELEASE_PATH.md`; the dollar figure, demo date, and Steam page date are still the maker’s calls.

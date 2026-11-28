@@ -69,12 +69,13 @@ finished look.
 
 Zombie Hockey League is one 9-minute arcade zombie-hockey match — skate,
 check, score, done — where Mutant League Hockey is a retro parody built on
-jokes, Wild Ice is a realistic sim with tower defence launching 19 August 2026,
-Super Blood Hockey is 4v4 arcade hockey built around brawls and fights, and
-Zombie Hockey Manager is a management game. This game wins on speed and
-simplicity: 3v3, zombie rules (no offsides, no icing, no stamina, a checked
-zombie stays down 2 seconds), and the first match delivers the whole game:
-no managing, no building, no story, no brawling.
+jokes, Wild Ice is a hockey tower-defence game that launched on Steam on
+19 August 2026 with a free demo and split-screen co-op, Super Blood Hockey is
+4v4 arcade hockey built around brawls and fights, and Zombie Hockey Manager is
+a management game. This game wins on speed and simplicity: 3v3, zombie rules
+(no offsides, no icing, no stamina, a checked zombie stays down 2 seconds),
+and the first match delivers the whole game: no managing, no building, no
+story, no brawling.
 
 ## Price, demo, Steam page
 
@@ -98,8 +99,9 @@ Full release path, with gated steps and what validates demand at each step:
 - **Price figure:** TBD — the maker sets the dollar figure before the Steam
   page goes live; a Steam page cannot publish without a price. No figure is
   invented here.
-- **Demo date:** target is ahead of Wild Ice's 19 August 2026 launch — exact
-  date maker to confirm.
+- **Demo date:** the old target (ahead of Wild Ice’s 19 August 2026 launch)
+  has lapsed — Wild Ice is live on Steam since 19 August 2026 — so the maker
+  must set a new target date. No date is invented here.
 - **Steam page date:** TBD — maker to confirm.
 
 ## Next review evidence (fix #3)

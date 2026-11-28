@@ -15,7 +15,7 @@ This answers VEX (Game Test Lab, 3.5/10): the release path was not stated. It is
 - **Entry:** Gate 0 exit criteria met and the 60-second capture passes review.
 - **Where it goes:** free demo on the Steam page once the page is live; until then, a direct download link from a repo release.
 - **Validates:** whether players finish a match, replay it, and ask for the league — before any money is asked.
-- **Demo date:** target is ahead of Wild Ice's 19 August 2026 launch. Exact date: **maker to confirm — not set here.**
+- **Demo date:** the old target (ahead of Wild Ice’s 19 August 2026 launch) has lapsed — Wild Ice launched 19 August 2026 and is live on Steam with a free demo and split-screen co-op. Exact date: **maker to confirm — not set here.**
 
 ## Gate 2 — Steam page (validates demand, collects wishlists)
 
