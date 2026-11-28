@@ -3,6 +3,10 @@ extends Node2D
 ## 3 periods x 3 minutes (9:00), most goals wins, sudden-death OT then a
 ## shootout on a tie. Pause, restart, result, player switching, the FPS
 ## readout, and the shootout live here.
+## Switching is visible: the active skater is full brightness and the other
+## home skaters are dimmed. Overtime plays under a FULL MOON cue. A goal
+## plays the coffin-creak horn through $HUD/GoalHorn when an audio stream
+## is assigned to it (asset still pending — see docs/DIRECTION.md).
 
 const PERIOD_SECONDS := 180.0
 const PERIODS := 3
@@ -40,6 +44,8 @@ var active_skater: ZombieSkater = null
 @onready var fps_label: Label = $HUD/FPSLabel
 @onready var result_label: Label = $HUD/ResultLabel
 @onready var pause_menu: Control = $HUD/PauseMenu
+@onready var moon_label: Label = $HUD/MoonLabel
+@onready var horn: AudioStreamPlayer = $HUD/GoalHorn
 
 func _ready() -> void:
 	# Keep processing while paused so pause can be toggled off and R can restart.
@@ -94,6 +100,7 @@ func _check_goal() -> void:
 		_on_goal("home")
 
 func _on_goal(team: String) -> void:
+	_play_goal_horn()
 	if shootout:
 		if team == "home":
 			shootout_home += 1
@@ -109,6 +116,13 @@ func _on_goal(team: String) -> void:
 		_end_match()  # Sudden death: the first goal in OT wins.
 	else:
 		_reset_after_goal()
+
+func _play_goal_horn() -> void:
+	# Coffin-creak horn on every goal. The hook is live; the audio stream
+	# itself is still pending (see docs/DIRECTION.md), so a build without
+	# the asset stays silent instead of erroring.
+	if horn != null and horn.stream != null:
+		horn.play()
 
 func _reset_after_goal() -> void:
 	for i in home_skaters.size():
@@ -236,6 +250,9 @@ func _set_paused(value: bool) -> void:
 func _set_active_skater(skater: ZombieSkater) -> void:
 	for home in home_skaters:
 		home.is_active = (home == skater)
+		# Switching must read at a glance: the active skater is full
+		# brightness, the other home skaters are dimmed.
+		home.modulate = Color(1.0, 1.0, 1.0, 1.0) if home == skater else Color(0.6, 0.6, 0.6, 1.0)
 	active_skater = skater
 
 func switch_active_skater() -> void:
@@ -266,11 +283,14 @@ func _keep_puck_in_rink() -> void:
 
 func _update_hud() -> void:
 	score_label.text = "HOME %d — %d AWAY" % [home_score, away_score]
+	# The Full Moon cue: visible on screen for the whole of overtime, and
+	# named in the clock, so the theme lands before the match ends.
+	moon_label.visible = overtime
 	if shootout:
 		clock_label.text = "SO R%d  %d — %d  %ds" % [shootout_round, shootout_home, shootout_away, int(shootout_timer)]
 	else:
 		var minutes := int(time_left) / 60
 		var seconds := int(time_left) % 60
-		var label := "OT" if overtime else "P%d" % period
+		var label := "FULL MOON OT" if overtime else "P%d" % period
 		clock_label.text = "%d:%02d  %s" % [minutes, seconds, label]
 	fps_label.text = "%d FPS" % Engine.get_frames_per_second()

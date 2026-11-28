@@ -11,6 +11,7 @@
 - A follow-up update answers VEX’s four remaining items: the monetisation decision in writing (one-time purchase, no pay-to-win, full league in the base price), Super Blood Hockey added to the differentiation, the zombie rules pinned to the code in this repo, and a PC target-device test log (`docs/TEST_LOG.md`). Note: VEX’s items 3–4 refer to a "phone build" — there is no phone build; the target device is PC (Windows via Steam), and the test log corrects that.
 - The latest update answers VEX’s remaining flag — no release path stated — with a gated release path in [`docs/RELEASE_PATH.md`](docs/RELEASE_PATH.md): 60-second capture → free one-match demo → Steam page → 1.0 launch, with what validates demand at each step. The price figure, demo date, and Steam page date are still the maker’s calls and are recorded as open decisions there, not invented.
 - This update corrects the Wild Ice references now that it has launched (19 August 2026 on Steam, free demo, split-screen co-op): the one-sentence differentiation and the demo-date target in `docs/BUILD_SHEET.md` and `docs/RELEASE_PATH.md`. The old “ahead of Wild Ice’s launch” demo target lapsed when Wild Ice went live, so the maker must set a new target date. Still open and still the maker’s items, not invented here: the 60-second capture, the two-machine test log, the price figure, the demo date, and the Steam page date.
+- VEX (Game Test Lab) then scored it **3/10 (grade D)** — "A promising roster and zombie rule list on paper, but no proven playable hockey match on a phone yet." This update answers that review on the real target device: the single PC build (menu + one full match) is the merged build, the gamepad/keyboard scheme now has a 0.2 stick dead zone and a clear active-skater indicator, the roster file is `data/teams.json`, the zombie rules are a frozen register with the 5-second bite-or-brawl cut (`docs/ZOMBIE_RULES.md`), the loop is pinned to the code element by element (`docs/MATCH_EVIDENCE.md`), and the theme now shows in the first 30 seconds (THE CRYPT arena name, flattened zombies with limb debris, the FULL MOON cue in overtime, and the goal-horn hook). Note: VEX’s items again say "phone project" and "touch controls" — there is still no phone build; the target device is PC (Windows via Steam), so the phone items are answered with their PC equivalents. Still open and still needing real hardware: the 60-second capture, the two-machine test log, the fresh-player playtest, and the horn audio asset.
 
 ## The vertical slice (this update)
 
@@ -20,6 +21,8 @@
 - Shooting is aimed: hold Up/Down while shooting to pick a corner — the goalie guards the middle.
 - Live FPS readout in the match HUD, so the 60 fps target is visible in the capture.
 - Pause now actually unpauses (the match node keeps processing while paused); R restarts from anywhere.
+- Controls you can trust: left-stick dead zone 0.2, so stick drift never skates the active skater; the active skater is full brightness while teammates are dimmed, so switching reads at a glance.
+- Theme in the first 30 seconds: THE CRYPT arena name on screen, a check lies a zombie flat and pops limb debris loose, overtime plays under a FULL MOON cue, and a goal triggers the coffin-creak horn hook (audio asset still pending).
 
 ## The fixes (highest priority first)
 
@@ -52,13 +55,15 @@
 - `docs/CAPTURE_CHECKLIST.md` — the 60-second capture checklist.
 - `docs/CONTROLS_AND_MIN_SPEC.md` — gamepad-first scheme, minimum spec, fresh-player protocol, and the two-machine test log.
 - `docs/TEST_LOG.md` — the target-device test log: zombie rules pinned to the code, the no-phone-build correction, and the PC checklist.
+- `docs/ZOMBIE_RULES.md` — the frozen zombie-rules register: what is live in the code, Rage and Infection gated behind the single-match-fun gate, and the 5-second bite-or-brawl CUT.
+- `docs/MATCH_EVIDENCE.md` — the core loop pinned to the code element by element (skate, pass, shoot, check, AI, goalie, scoring, periods, overtime, shootout, win/lose), and what is still unproven.
+- `data/teams.json` — the roster file: the two slice teams (3 skaters each, 1–5 ratings, play style, colours); the other six league teams named with rosters not yet defined.
 - `export_presets.cfg` — Windows Desktop export preset (Godot 4.3 templates required).
 - `project.godot` — Godot 4 project definition, input map, and Windows export settings.
 - `scenes/main.tscn` — main menu and match entry.
 - `scenes/rink.tscn` — playable rink: two teams of three, goals, puck, HUD with FPS and result.
 - `scripts/player.gd` — skating, passing, shooting, checking, player switching, stun, puck carry/pickup.
 - `scripts/match.gd` — periods, overtime, shootout, pause, restart, switching, FPS.
-- `BUILD-PLAN.md` — the full plan: features, stack, milestones, and open questions.
 
 ## How to run
 
@@ -74,4 +79,4 @@
 
 ## Status
 
-Fix-first update in progress. The vertical slice (3v3, periods, OT, shootout) is in the code; the 60-second capture, the fresh-player playtest, and the two-machine test log are still open until recorded on real hardware. Monetisation is decided in writing (one-time purchase, no pay-to-win, the full league in the base price) and the release path is now stated in `docs/RELEASE_PATH.md`; the dollar figure, demo date, and Steam page date are still the maker’s calls.
+Fix-first update in progress. The vertical slice (3v3, periods, OT, shootout) is in the code; the 60-second capture, the fresh-player playtest, and the two-machine test log are still open until recorded on real hardware. Monetisation is decided in writing (one-time purchase, no pay-to-win, the full league in the base price) and the release path is now stated in `docs/RELEASE_PATH.md`; the dollar figure, demo date, and Steam page date are still the maker’s calls. The zombie rules are now a frozen register with the bite-or-brawl cut, and the goal-horn audio asset is still pending.

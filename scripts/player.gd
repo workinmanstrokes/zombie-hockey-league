@@ -4,6 +4,10 @@ class_name ZombieSkater
 ## Skate, pass, shoot, check, and switch — nothing else lives in this script.
 ## Zombie rules: a checked skater is flattened for 2 seconds and drops the puck.
 ## The puck is carried (frozen to the carrier) and picked up on contact.
+## Controls: left-stick dead zone 0.2 (see docs/CONTROLS_AND_MIN_SPEC.md), so
+## stick drift never skates the active skater. A flattened zombie lies flat
+## (rotated 90 degrees) and a check pops a limb-debris marker loose — the
+## limb-popping hit feedback, with no art asset needed.
 
 const SKATE_SPEED := 320.0
 const SKATE_ACCEL := 1800.0
@@ -13,6 +17,8 @@ const STUN_SECONDS := 2.0
 const PICKUP_RADIUS := 30.0
 const GOALIE_TRACK_SPEED := 110.0
 const GOALIE_REACT_DISTANCE := 220.0
+const STICK_DEADZONE := 0.2
+const LIMB_DEBRIS_SECONDS := 0.6
 
 var has_puck := false
 var is_active := false
@@ -29,10 +35,12 @@ var ai_aim := 0.0
 func _physics_process(delta: float) -> void:
 	if stun_timer > 0.0:
 		stun_timer -= delta
+		rotation = PI / 2.0
 		velocity = velocity.move_toward(Vector2.ZERO, SKATE_ACCEL * delta)
 		move_and_slide()
 		return
 
+	rotation = 0.0
 	check_timer = max(0.0, check_timer - delta)
 
 	if goalie:
@@ -58,7 +66,7 @@ func _physics_process(delta: float) -> void:
 			shoot_puck()
 
 func _player_move(delta: float) -> void:
-	var input_dir := Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	var input_dir := Input.get_vector("move_left", "move_right", "move_up", "move_down", STICK_DEADZONE)
 	var target := input_dir * SKATE_SPEED
 	velocity = velocity.move_toward(target, SKATE_ACCEL * delta)
 	move_and_slide()
@@ -128,7 +136,7 @@ func shoot_puck() -> void:
 	# Aim with up/down: hold up or down while shooting to pick a corner.
 	# The goalie guards the middle, so corner shots score and central ones don't.
 	var goal_x := 1240.0 if global_position.x < 640.0 else 40.0
-	var aim_y := ai_aim if ai_shooter else Input.get_vector("move_left", "move_right", "move_up", "move_down").y
+	var aim_y := ai_aim if ai_shooter else Input.get_vector("move_left", "move_right", "move_up", "move_down", STICK_DEADZONE).y
 	var target := Vector2(goal_x, 360.0 + aim_y * 50.0)
 	var direction := (target - global_position).normalized()
 	puck.freeze = false
@@ -145,9 +153,21 @@ func check_opponent() -> void:
 			opponent.velocity += push * CHECK_IMPULSE
 			if opponent is ZombieSkater:
 				opponent.stun_timer = STUN_SECONDS
+				_spawn_limb_debris(opponent.global_position, Color(0.2, 0.6, 0.25) if opponent.is_in_group("home") else Color(0.6, 0.2, 0.25))
 				if opponent.has_puck:
 					opponent.has_puck = false
 					has_puck = true
+
+func _spawn_limb_debris(at: Vector2, color: Color) -> void:
+	# Limb-popping hit feedback: a small piece of the flattened zombie pops
+	# loose on a check and vanishes after LIMB_DEBRIS_SECONDS. No art asset
+	# is needed for the gag to read on screen.
+	var limb := ColorRect.new()
+	limb.size = Vector2(14.0, 6.0)
+	limb.color = color
+	limb.position = at - Vector2(7.0, 3.0)
+	get_parent().add_child(limb)
+	get_tree().create_timer(LIMB_DEBRIS_SECONDS).timeout.connect(limb.queue_free)
 
 func request_switch() -> void:
 	var match_node := get_parent()

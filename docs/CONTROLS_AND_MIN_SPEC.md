@@ -28,6 +28,29 @@ keyboard as a fallback. Both feed the same actions in `project.godot`
 | Pause | Esc |
 | Restart match | R (on pause / result screen) |
 
+## Stick dead zone and switching (VEX fix)
+
+- **Dead zone 0.2:** `scripts/player.gd` reads the left stick with
+  `Input.get_vector(..., STICK_DEADZONE)` where `STICK_DEADZONE := 0.2`, so
+  stick drift below 0.2 never skates the active skater, and the same dead
+  zone applies to the Up/Down aim while shooting. Keyboard input is digital
+  and is unaffected.
+- **Switching reads at a glance:** `scripts/match.gd` `_set_active_skater()`
+  sets the active home skater to full brightness and dims the other home
+  skaters to 0.6, so it is always obvious which zombie answers the stick.
+  A switch cycles the three home skaters in order; it does nothing during a
+  shootout or after the final whistle.
+- **Missed inputs:** pass, shoot, check, and switch all fire on
+  `is_action_just_pressed`, so one press is one action — a held button does
+  not repeat the action. Check has a 0.8-second cooldown by design.
+
+## Touch controls
+
+None — there are no touch controls in this game, and none are planned. The
+target device is PC (Windows via Steam); VEX's "touch controls" items are
+answered by the gamepad-first scheme above and the keyboard fallback, which
+are the controls the target device actually has.
+
 ## Minimum PC target
 
 Benchmark floor comparable to Wild Ice's i3-6100 / GTX 750 Ti floor:
